@@ -7,33 +7,46 @@ output:
     keep_md: yes
 ---
 
-
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Woe is a me bop om drop a re bop om
 
 
 ```r
-summary(cars)
+library(tidyverse)
 ```
 
 ```
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
+## -- Attaching packages ---------------------------------------------------------- tidyverse 1.2.1 --
 ```
 
-## Including Plots
+```
+## v ggplot2 2.2.1.9000     v purrr   0.2.4     
+## v tibble  1.4.1          v dplyr   0.7.4     
+## v tidyr   0.7.2          v stringr 1.2.0     
+## v readr   1.1.1          v forcats 0.2.0
+```
 
-You can also embed plots, for example:
+```
+## Warning: package 'tibble' was built under R version 3.4.3
+```
 
-![](TestRMarkdownGitHub_files/figure-html/pressure-1.png)<!-- -->
+```
+## -- Conflicts ------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```r
+foo <- readRDS("C:/Users/bk6014/OneDrive - Cerner Corporation/RWD/learningR2/data/co2.Rds")
+head(foo)
+```
+
+```
+##   X     time    co2
+## 1 1 1959.000 315.42
+## 2 2 1959.083 316.31
+## 3 3 1959.167 316.50
+## 4 4 1959.250 317.56
+## 5 5 1959.333 318.13
+## 6 6 1959.417 318.00
+```
+

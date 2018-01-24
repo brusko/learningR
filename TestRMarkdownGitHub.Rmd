@@ -11,7 +11,7 @@ Woe is a me bop om drop a re bop om
 
 ```{r}
 library(tidyverse)
-foo <- readRDS("C:/Users/bk6014/OneDrive - Cerner Corporation/RWD/learningR2/co2.Rds")
+foo <- readRDS("C:/Users/bk6014/OneDrive - Cerner Corporation/RWD/learningR2/data/co2.Rds")
 head(foo)
 ```
 
