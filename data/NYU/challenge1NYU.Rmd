@@ -1,0 +1,94 @@
+---
+title: "Challenge1NYU"
+author: "Bruce Kusko"
+date: "January 30, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+```
+
+## Challenge 1 
+### NYU Data Science Workshop
+
+```{r}
+## read in the data set
+hony <- read.csv("./humansofnewyork.csv", stringsAsFactors=FALSE)
+```
+
+
+Do some data exploration:
+```{r}
+dim(hony)
+head(hony,3)
+summary(hony)
+```
+
+
+#### 1. How many status updates have been posted on this page?
+
+If a status update can be either a like, a comment, or a share, then each row is a status update
+
+```{r, echo=FALSE}
+## length of data frame is first dimension
+ans1 <- dim(hony)[1]
+print(paste0(ans1, ' status updates have been posted on this page', sep=''))
+```
+
+#### 2. What is the total number of likes, comments, and shares it received?
+
+Here we just need to sum the three columns and then get grand total.
+
+```{r}
+ans2a <- colSums(hony[,8:10])
+print(paste0('Total likes = ', ans2a[1], 'total comments = ', ans2a[2], 'and total shares = ', ans2a[3]))
+print(paste0(' So the total of totals is: ', ans2a[1] + ans2a[2] + ans2a[3]))
+```
+
+
+#### 3. What is the content of the post with the highest number of shares?
+
+Looks like they're asking for the "message" from the row with the most "shares_count".
+
+```{r, echo=FALSE}
+## message is the 3rd column
+ans3 <- head(arrange(hony, desc(shares_count)),1)[,3]
+print(paste0('The "message" with the most shares is: ', ans3))
+```
+
+
+#### 4. What was the date in which the first photo was posted?
+
+We see from hony$type that there are links, photos, videos, and statuses.
+We want to find the first 'update' with a photo
+?? Subset the rows with photos and take the earliest one??
+Problem is, 'created time' is not in standard format, it has a T in the middle, and is a char.
+Create a true 'date' column (called 'created_time2')
+
+```{r}
+# convert the 'created_time' col to a date
+# first strip out the YYYY-MM-DD into a new column
+hony$created_time2 <- substr(hony$created_time, 1, 10)
+## now change that 'char' to a 'date'
+hony$created_time2 <- as.Date(hony$created_time2)
+```
+Sort by oldest
+```{r}
+ans4 <- head(arrange(hony, created_time2),1)[,11]
+print(paste0('The date of the oldest posting with a photo is: ', ans4))
+```
+
+#### 5. What is the total number of likes that the page has ever received, excluding its most popular post?
+
+Not sure, but it sounds like we want the total likes minus the most popular (by likes) post.
+So need to sort, descending, and take the sum of the 2nd thru end.
+
+
+
+
+end as of now
+
